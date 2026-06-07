@@ -60,6 +60,14 @@ class TestSubjectBehavior(unittest.TestCase):
         self.assertIn("data = {ativo: false, updated_at: \"now\"}", content)
         self.assertIn("action    : \"subject_deleted\"", content)
 
+    def test_search_subjects_filters_by_name_or_overdue_tasks(self):
+        content = load_file("apis/subjects/3834605_subjects_search_GET.xs")
+
+        self.assertIn("query \"subjects/search\" verb=GET", content)
+        self.assertIn("auth = \"user\"", content)
+        self.assertIn("db.direct_query", content)
+        self.assertIn("has_overdue_tasks", content)
+
 
 if __name__ == "__main__":
     unittest.main()
