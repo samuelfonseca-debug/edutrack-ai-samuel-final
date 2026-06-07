@@ -36,6 +36,10 @@ table subject {
       field: [{name: "account_id", op: "asc"}, {name: "ativo", op: "asc"}]
     }
     {type: "btree", field: [{name: "codigo", op: "asc"}]}
+    {
+      type : "unique"
+      field: [{name: "user_id", op: "asc"}, {name: "nome", op: "asc"}]
+    }
   ]
 
   tags = ["xano:quick-start"]
