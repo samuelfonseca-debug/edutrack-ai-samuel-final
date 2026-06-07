@@ -18,6 +18,7 @@ query academic_tasks verb=POST {
         due_date   : $input.due_date
         status     : $input.status
         subject_id : $input.subject_id
+        prioridade : $input.prioridade  // <- Adicionamos essa linha para salvar a prioridade!
       }
     } as $model
   }
