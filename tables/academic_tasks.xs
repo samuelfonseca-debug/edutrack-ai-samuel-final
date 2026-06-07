@@ -7,17 +7,18 @@ table academic_tasks {
     timestamp created_at?=now {
       visibility = "private"
     }
-
+  
     text title filters=trim
     text description? filters=trim
-    date due_date {
-      description = "Due date for the academic task"
-    }
+  
+    // Due date for the academic task
+    date due_date
+  
     text status filters=trim
-
+  
+    // Reference to the associated academic subject
     int subject_id {
       table = "subject"
-      description = "Reference to the associated academic subject"
     }
   }
 

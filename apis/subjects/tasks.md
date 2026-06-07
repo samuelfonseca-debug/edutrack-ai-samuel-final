@@ -1,0 +1,3 @@
+- [ ] Definir especificação OpenSpec para endpoints CRUD de `subjects` (scoped to user)
+- [ ] Implementar/validar `POST /subjects`, `GET /subjects`, `GET /subjects/{id}`, `PATCH /subjects/{id}`, `DELETE /subjects/{id}` garantindo `user_id == $auth.id`
+- [ ] Garantir que todos os endpoints exijam autenticação (`auth = "user"`) e retornem erros consistentes para acesso negado

@@ -7,27 +7,25 @@ table activity_grades {
     timestamp created_at?=now {
       visibility = "private"
     }
-
+  
     int activity_id {
-      table = "academic_task"
+      table = ""
     }
-
+  
     int student_id {
       table = "user"
     }
-
-    decimal grade {
-      description = "Grade value assigned to the student"
-    }
-
+  
+    // Grade value assigned to the student
+    decimal grade
+  
+    // Reference to the teacher who assigned the grade
     int teacher_id {
       table = "user"
-      description = "Reference to the teacher who assigned the grade"
     }
-
-    text comment? filters=trim {
-      description = "Optional observation about the grade assignment"
-    }
+  
+    // Optional observation about the grade assignment
+    text comment? filters=trim
   }
 
   index = [
@@ -35,7 +33,13 @@ table activity_grades {
     {type: "btree", field: [{name: "activity_id", op: "asc"}]}
     {type: "btree", field: [{name: "student_id", op: "asc"}]}
     {type: "btree", field: [{name: "teacher_id", op: "asc"}]}
-    {type: "btree", field: [{name: "activity_id", op: "asc"}, {name: "student_id", op: "asc"}]}
+    {
+      type : "btree"
+      field: [
+        {name: "activity_id", op: "asc"}
+        {name: "student_id", op: "asc"}
+      ]
+    }
   ]
 
   tags = ["xano:quick-start"]
